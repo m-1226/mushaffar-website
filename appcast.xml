@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+    <channel>
+        <title>Mushaffar</title>
+        <description>Password Manager Updates</description>
+        <language>en</language>
+        <link>https://mushaffar.com</link>
+        
+        <!-- macOS Version -->
+        <item>
+            <title>Mushaffar 1.0.0</title>
+            <description>
+                <![CDATA[
+                    <h3>What's New in Version 1.0.0</h3>
+                    <ul>
+                        <li>Initial release</li>
+                        <li>Secure password management</li>
+                        <li>2FA authenticator support</li>
+                        <li>Cards management</li>
+                        <li>Google Drive auto-backup</li>
+                        <li>Biometric authentication</li>
+                    </ul>
+                ]]>
+            </description>
+            <pubDate>Sat, 02 Nov 2025 12:00:00 +0000</pubDate>
+            <sparkle:version>1.0.0</sparkle:version>
+            <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
+            <enclosure 
+                url="https://github.com/m-1226/mushaffar-website/releases/download/v1.0.0/Mushaffar-1.0.0-macos.dmg"
+                sparkle:os="macos"
+                length="180000000"
+                type="application/octet-stream" />
+        </item>
+        
+        <!-- Windows Version -->
+        <item>
+            <title>Mushaffar 1.0.0</title>
+            <description>
+                <![CDATA[
+                    <h3>What's New in Version 1.0.0</h3>
+                    <ul>
+                        <li>Initial release</li>
+                        <li>Secure password management</li>
+                        <li>2FA authenticator support</li>
+                        <li>Cards management</li>
+                        <li>Google Drive auto-backup</li>
+                        <li>Biometric authentication</li>
+                    </ul>
+                ]]>
+            </description>
+            <pubDate>Sat, 02 Nov 2025 12:00:00 +0000</pubDate>
+            <sparkle:version>1.0.0</sparkle:version>
+            <sparkle:os>windows</sparkle:os>
+            <enclosure 
+                url="https://github.com/m-1226/mushaffar-website/releases/download/v1.0.0/Mushaffar-1.0.0-windows.exe"
+                type="application/octet-stream"
+                length="150000000" />
+        </item>
+    </channel>
+</rss>
