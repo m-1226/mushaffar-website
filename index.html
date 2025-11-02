@@ -1136,7 +1136,15 @@
 
       <div class="footer-bottom">
         <p id="footer-copyright">© 2025 Mushaffar. All rights reserved.</p>
-        <p id="footer-made">Made with Mahmoud Ashraf</p>
+        <p id="footer-made">
+          Made with 🔐 by
+          <a
+            href="https://www.linkedin.com/in/mahmoud-ashraf-yahia/"
+            target="_blank"
+            style="color: var(--secondary); text-decoration: none"
+            >Mahmoud Ashraf</a
+          >
+        </p>
       </div>
     </footer>
 
@@ -1209,7 +1217,8 @@
           footerTerms: "Terms of Service",
           footerContact: "Contact",
           footerCopyright: "© 2025 Mushaffar. All rights reserved.",
-          footerMade: "Made with Mahmoud Ashraf",
+          footerMade:
+            'Made with 🔐 by <a href="https://www.linkedin.com/in/mahmoud-ashraf-yahia/" target="_blank" style="color: var(--secondary); text-decoration: none;">Mahmoud Ashraf</a>',
         },
         ar: {
           navTitle: "مُشفّر",
@@ -1277,7 +1286,8 @@
           footerTerms: "شروط الخدمة",
           footerContact: "اتصل بنا",
           footerCopyright: "© 2025 مشفّر. جميع الحقوق محفوظة.",
-          footerMade: "صُنع بواسطة محمود أشرف ",
+          footerMade:
+            'صُنع بـ 🔐 بواسطة <a href="https://www.linkedin.com/in/mahmoud-ashraf-yahia/" target="_blank" style="color: var(--secondary); text-decoration: none;">محمود أشرف</a>',
         },
       };
 
@@ -1360,7 +1370,7 @@
 
         Object.keys(updates).forEach((id) => {
           const element = document.getElementById(id);
-          if (element) element.textContent = updates[id];
+          if (element) element.innerHTML = updates[id];
         });
 
         // Update direction
