@@ -37,7 +37,7 @@ This is a static website built with:
 
 ## 📄 License
 
-© 2024 Mushaffar. All rights reserved.
+© 2025 Mushaffar. All rights reserved.
 
 ---
 
