@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mushaffar - Zero-Knowledge Password Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #091e37;
+        --secondary: #4895ef;
+        --card-bg: #1a2f4a;
+        --accent-green: #06d6a0;
+        --text-muted: #94a3b8;
+        --border-subtle: rgba(72, 149, 239, 0.15);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background-color: var(--primary);
+        color: white;
+        overflow-x: hidden;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body[dir="rtl"] {
+        font-family: "Noto Kufi Arabic", sans-serif;
+      }
+
+      /* Sophisticated Background */
+      .bg-gradient {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(72, 149, 239, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(6, 214, 160, 0.05) 0%,
+            transparent 50%
+          );
+      }
+
+      .bg-pattern {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: linear-gradient(
+            rgba(72, 149, 239, 0.5) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(72, 149, 239, 0.5) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 100;
+        background: rgba(9, 30, 55, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .nav-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .logo-img {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+      }
+
+      .logo-text {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .lang-toggle {
+        padding: 10px 20px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        color: white;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .lang-toggle:hover {
+        background: var(--secondary);
+        border-color: var(--secondary);
+        transform: translateY(-2px);
+      }
+
+      /* Hero Section - Premium Layout */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        padding: 120px 40px 80px;
+        z-index: 1;
+      }
+
+      .hero-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+
+      .hero-content {
+        max-width: 600px;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(6, 214, 160, 0.1);
+        border: 1px solid rgba(6, 214, 160, 0.3);
+        border-radius: 100px;
+        color: var(--accent-green);
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .hero h1 {
+        font-size: 64px;
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -2px;
+        margin-bottom: 24px;
+        background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInUp 0.6s ease-out 0.1s backwards;
+      }
+
+      .hero-subtitle {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--secondary);
+        margin-bottom: 16px;
+        animation: fadeInUp 0.6s ease-out 0.2s backwards;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 40px;
+        animation: fadeInUp 0.6s ease-out 0.3s backwards;
+      }
+
+      .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        animation: fadeInUp 0.6s ease-out 0.4s backwards;
+      }
+
+      .btn-primary {
+        padding: 16px 32px;
+        background: var(--secondary);
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 24px rgba(72, 149, 239, 0.3);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary:hover {
+        background: #3a7fd9;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 32px rgba(72, 149, 239, 0.4);
+      }
+
+      .btn-secondary {
+        padding: 16px 32px;
+        background: transparent;
+        color: white;
+        font-size: 16px;
+        font-weight: 600;
+        border: 2px solid var(--border-subtle);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--secondary);
+        background: rgba(72, 149, 239, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* Hero Visual */
+      .hero-visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.8s ease-out 0.3s backwards;
+      }
+
+      .logo-showcase {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo-main {
+        width: 280px;
+        height: 280px;
+        border-radius: 60px;
+        box-shadow: 0 0 80px rgba(72, 149, 239, 0.4),
+          0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: float 6s ease-in-out infinite;
+        z-index: 2;
+        position: relative;
+      }
+
+      .glow-ring {
+        position: absolute;
+        inset: -40px;
+        border: 2px solid var(--secondary);
+        border-radius: 80px;
+        opacity: 0.2;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      .glow-ring:nth-child(2) {
+        animation-delay: 1s;
+        opacity: 0.1;
+        inset: -60px;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        50% {
+          transform: translateY(-20px) scale(1.02);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.2;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Zero Backend Section - KEY DIFFERENTIATOR */
+      .zero-backend {
+        position: relative;
+        padding: 120px 40px;
+        z-index: 1;
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(6, 214, 160, 0.03) 100%
+        );
+      }
+
+      .section-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 80px;
+      }
+
+      .section-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        background: rgba(6, 214, 160, 0.1);
+        border: 1px solid rgba(6, 214, 160, 0.3);
+        border-radius: 100px;
+        color: var(--accent-green);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        font-size: 48px;
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: -1.5px;
+        margin-bottom: 20px;
+      }
+
+      .section-description {
+        font-size: 20px;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      /* Comparison Grid */
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .comparison-card {
+        padding: 40px;
+        background: var(--card-bg);
+        border: 2px solid var(--border-subtle);
+        border-radius: 24px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .comparison-card.winner {
+        border-color: var(--accent-green);
+        background: rgba(6, 214, 160, 0.05);
+      }
+
+      .comparison-card.loser {
+        opacity: 0.6;
+      }
+
+      .comparison-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .comparison-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        margin-bottom: 24px;
+      }
+
+      .winner .comparison-icon {
+        background: rgba(6, 214, 160, 0.15);
+      }
+
+      .loser .comparison-icon {
+        background: rgba(239, 68, 68, 0.15);
+      }
+
+      .comparison-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .comparison-points {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .comparison-points li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .winner .comparison-points li::before {
+        content: "✓";
+        color: var(--accent-green);
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .loser .comparison-points li::before {
+        content: "✗";
+        color: #ef4444;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      /* Features Grid */
+      .features {
+        padding: 80px 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-top: 40px;
+      }
+
+      .feature-card {
+        padding: 32px 24px;
+        background: var(--card-bg);
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: center;
+      }
+
+      .feature-card:hover {
+        border-color: var(--secondary);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(72, 149, 239, 0.12);
+      }
+
+      .feature-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: rgba(72, 149, 239, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin: 0 auto 16px;
+      }
+
+      .feature-title {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .feature-description {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* Download Section */
+      .downloads {
+        padding: 120px 40px;
+        background: rgba(10, 25, 41, 0.5);
+        position: relative;
+        z-index: 1;
+      }
+
+      .download-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        max-width: 900px;
+        margin: 60px auto 0;
+      }
+
+      .download-card {
+        padding: 32px;
+        background: var(--card-bg);
+        border: 2px solid var(--border-subtle);
+        border-radius: 20px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+        display: block;
+      }
+
+      .download-card:hover {
+        border-color: var(--secondary);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(72, 149, 239, 0.2);
+      }
+
+      .download-card.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        border-color: #475569;
+      }
+
+      .download-card.disabled:hover {
+        transform: none;
+        box-shadow: none;
+      }
+
+      .download-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+
+      .platform-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        background: rgba(72, 149, 239, 0.1);
+      }
+
+      .download-status {
+        padding: 4px 12px;
+        border-radius: 100px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .status-available {
+        background: rgba(6, 214, 160, 0.15);
+        color: var(--accent-green);
+      }
+
+      .status-soon {
+        background: rgba(255, 184, 0, 0.15);
+        color: #ffb800;
+      }
+
+      .download-title {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .download-subtitle {
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      /* Official Store Badges */
+      .store-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .store-badge {
+        height: 48px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: brightness(0.9);
+      }
+
+      .store-badge:hover {
+        filter: brightness(1.1);
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      footer {
+        padding: 60px 40px;
+        border-top: 1px solid var(--border-subtle);
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 60px;
+      }
+
+      .footer-brand {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .footer-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+      }
+
+      .footer-text h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .footer-text p {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .footer-section h4 {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 16px;
+        color: var(--text-muted);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: var(--secondary);
+      }
+
+      .footer-bottom {
+        max-width: 1400px;
+        margin: 40px auto 0;
+        padding-top: 40px;
+        border-top: 1px solid var(--border-subtle);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .hero-container {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-content {
+          max-width: 100%;
+        }
+
+        .hero-cta {
+          justify-content: center;
+        }
+
+        .hero-visual {
+          margin-top: 60px;
+        }
+
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-content {
+          padding: 16px 24px;
+        }
+
+        .hero {
+          padding: 100px 24px 60px;
+        }
+
+        .hero h1 {
+          font-size: 42px;
+        }
+
+        .hero-subtitle {
+          font-size: 20px;
+        }
+
+        .hero p {
+          font-size: 16px;
+        }
+
+        .logo-showcase {
+          width: 300px;
+          height: 300px;
+        }
+
+        .logo-main {
+          width: 220px;
+          height: 220px;
+        }
+
+        .section-title {
+          font-size: 36px;
+        }
+
+        .section-description {
+          font-size: 18px;
+        }
+
+        .comparison-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .download-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 16px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Effects -->
+    <div class="bg-gradient"></div>
+    <div class="bg-pattern"></div>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-content">
+        <div class="logo-container">
+          <img
+            src="assets/appstore.png"
+            alt="Mushaffar Logo"
+            class="logo-img"
+          />
+          <span class="logo-text" id="nav-title">Mushaffar</span>
+        </div>
+        <button class="lang-toggle" onclick="toggleLanguage()">
+          <span id="lang-text">العربية</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>🛡️</span>
+            <span id="hero-badge">Zero Backend Architecture</span>
+          </div>
+          <h1 id="hero-title">Your passwords never leave your device</h1>
+          <p class="hero-subtitle" id="hero-subtitle">
+            True zero-knowledge encryption
+          </p>
+          <p id="hero-description">
+            Unlike cloud password managers, Mushaffar has no servers to hack.
+            Your passwords are encrypted locally and sync only through your own
+            Google Drive. You hold the only key.
+          </p>
+          <div class="hero-cta">
+            <button class="btn-primary" id="cta-primary">
+              <span>⬇</span>
+              <span>Download for macOS</span>
+            </button>
+            <button class="btn-secondary" id="cta-secondary">
+              <span>→</span>
+              <span>View All Platforms</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="logo-showcase">
+            <div class="glow-ring"></div>
+            <div class="glow-ring"></div>
+            <img src="assets/appstore.png" alt="Mushaffar" class="logo-main" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Zero Backend Section -->
+    <section class="zero-backend">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-badge" id="section-badge">
+            <span>🔒</span>
+            <span>Zero Backend</span>
+          </div>
+          <h2 class="section-title" id="section-title">
+            No servers. No breaches. No trust required.
+          </h2>
+          <p class="section-description" id="section-desc">
+            Traditional password managers store your encrypted data on their
+            servers. Mushaffar doesn't. There's literally nothing to hack.
+          </p>
+        </div>
+
+        <div class="comparison-grid">
+          <div class="comparison-card loser">
+            <div class="comparison-icon">☁️</div>
+            <h3 class="comparison-title" id="cloud-title">
+              Cloud Password Managers
+            </h3>
+            <ul class="comparison-points">
+              <li id="cloud-1">Your data sits on their servers</li>
+              <li id="cloud-2">Server breaches expose everyone</li>
+              <li id="cloud-3">You must trust the company</li>
+              <li id="cloud-4">They control your access</li>
+              <li id="cloud-5">Subscription fees required</li>
+            </ul>
+          </div>
+
+          <div class="comparison-card winner">
+            <div class="comparison-icon">🔐</div>
+            <h3 class="comparison-title" id="mushaffar-title">Mushaffar</h3>
+            <ul class="comparison-points">
+              <li id="mush-1">Data stays only on your devices</li>
+              <li id="mush-2">No backend = nothing to breach</li>
+              <li id="mush-3">Trust mathematics, not companies</li>
+              <li id="mush-4">You're always in control</li>
+              <li id="mush-5">One-time purchase, no subscriptions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="section-container">
+        <div class="section-header">
+          <div class="section-badge">
+            <span>⚡</span>
+            <span id="features-badge">FEATURES</span>
+          </div>
+          <h2 class="section-title" id="features-title">
+            Everything you need. Nothing you don't.
+          </h2>
+          <p class="section-description" id="features-desc">
+            Professional-grade security without the complexity
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3 class="feature-title" id="feat1-title">Argon2 Encryption</h3>
+            <p class="feature-description" id="feat1-desc">
+              Military-grade encryption protecting your data locally
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3 class="feature-title" id="feat2-title">Your Google Drive</h3>
+            <p class="feature-description" id="feat2-desc">
+              Optional sync through your own Google Drive
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3 class="feature-title" id="feat3-title">2FA Authenticator</h3>
+            <p class="feature-description" id="feat3-desc">
+              Built-in TOTP for two-factor authentication
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <h3 class="feature-title" id="feat4-title">Cross-Platform</h3>
+            <p class="feature-description" id="feat4-desc">
+              Works on macOS, iOS, Android, and Windows
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section class="downloads">
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title" id="download-title">Download Mushaffar</h2>
+          <p class="section-description" id="download-desc">
+            Available on all major platforms
+          </p>
+        </div>
+
+        <div class="download-grid">
+          <div class="download-card">
+            <div class="download-header">
+              <div class="platform-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                  />
+                </svg>
+              </div>
+              <div class="download-status status-available" id="macos-status">
+                Available
+              </div>
+            </div>
+            <h3 class="download-title" id="macos-title">macOS</h3>
+            <p class="download-subtitle" id="macos-subtitle">
+              Universal binary for Intel & Apple Silicon
+            </p>
+            <div class="store-badges">
+              <button class="btn-primary" style="margin-top: 16px">
+                <span id="macos-btn">Download .dmg</span>
+              </button>
+            </div>
+          </div>
+
+          <a
+            href="https://mukhtasar.pro/mushaffar-ios"
+            target="_blank"
+            class="download-card"
+          >
+            <div class="download-header">
+              <div class="platform-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                  />
+                </svg>
+              </div>
+              <div class="download-status status-available" id="ios-status">
+                Available
+              </div>
+            </div>
+            <h3 class="download-title" id="ios-title">iOS & iPadOS</h3>
+            <p class="download-subtitle" id="ios-subtitle">
+              iPhone, iPad, and Apple Watch
+            </p>
+            <div class="store-badges">
+              <img
+                src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1280620800"
+                alt="Download on App Store"
+                class="store-badge"
+              />
+            </div>
+          </a>
+
+          <a
+            href="https://mukhtasar.pro/mushaffar-android"
+            target="_blank"
+            class="download-card"
+          >
+            <div class="download-header">
+              <div class="platform-icon">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="#3DDC84">
+                  <path
+                    d="M17.6,11.48 L19.44,8.3 C19.5,8.17 19.46,8.02 19.33,7.97 C19.2,7.91 19.05,7.95 19,8.08 L17.16,11.25 C15.91,10.68 14.47,10.37 13,10.37 C11.53,10.37 10.09,10.68 8.84,11.25 L7,8.08 C6.95,7.95 6.8,7.91 6.67,7.97 C6.54,8.02 6.5,8.17 6.56,8.3 L8.4,11.48 C6.25,12.69 4.76,14.79 4.5,17.25 L21.5,17.25 C21.24,14.79 19.75,12.69 17.6,11.48 M7,13.75 C7,13.33 7.34,13 7.75,13 C8.16,13 8.5,13.34 8.5,13.75 C8.5,14.16 8.16,14.5 7.75,14.5 C7.34,14.5 7,14.16 7,13.75 M16.5,13.75 C16.5,13.34 16.84,13 17.25,13 C17.66,13 18,13.34 18,13.75 C18,14.16 17.66,14.5 17.25,14.5 C16.84,14.5 16.5,14.16 16.5,13.75 Z"
+                  />
+                </svg>
+              </div>
+              <div class="download-status status-available" id="android-status">
+                Available
+              </div>
+            </div>
+            <h3 class="download-title" id="android-title">Android</h3>
+            <p class="download-subtitle" id="android-subtitle">
+              Android 8.0 and above
+            </p>
+            <div class="store-badges">
+              <img
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                alt="Get it on Google Play"
+                class="store-badge"
+                style="height: 60px"
+              />
+            </div>
+          </a>
+
+          <div class="download-card disabled">
+            <div class="download-header">
+              <div class="platform-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M0,12V3.73L6.06,1.25L8.04,2.39L9,3.1V5.29L7.59,6.59L7,5.31V3.79L6.06,3.29L3.03,4.75V7.29L4,7.83V9.75L3,9.21V11.75L4,12.29V14.21L3,13.67V16.21L6.06,17.67L7,18.17V16.65L7.59,17.93L9,19.25V21.44L8.04,22.15L6.06,23.29L0,20.81V12.5C0,12.22 0.22,12 0.5,12H1.5C1.78,12 2,12.22 2,12.5V19.92L3.03,20.42V18.17L2.56,17.92L2,17.58V15.08L2.56,15.42L3.03,15.67V13.42L2,12.88V10.38L3.03,10.92V8.67L2.56,8.42L2,8.08V5.58L2.56,5.92L3.03,6.17V3.92L2,3.38V2C2,1.72 2.22,1.5 2.5,1.5H3.5C3.78,1.5 4,1.72 4,2V2.75L6.06,1.67L7,1.17V5.71L8,6.88V3.5C8,3.22 8.22,3 8.5,3H9.5C9.78,3 10,3.22 10,3.5V8.25L14.47,12.72L16,11.18V3.5C16,3.22 16.22,3 16.5,3H17.5C17.78,3 18,3.22 18,3.5V9.75L19.95,11.7C20.34,12.09 20.34,12.72 19.95,13.11L11.11,21.95C10.72,22.34 10.09,22.34 9.7,21.95L1.89,14.14C1.5,13.75 1.5,13.12 1.89,12.73L10.73,3.89C11.12,3.5 11.75,3.5 12.14,3.89L12.85,4.6L13.56,3.89C13.95,3.5 14.58,3.5 14.97,3.89L15.68,4.6L16.39,3.89C16.78,3.5 17.41,3.5 17.8,3.89L18.51,4.6L19.22,3.89C19.61,3.5 20.24,3.5 20.63,3.89L21.34,4.6L22.05,3.89C22.44,3.5 23.07,3.5 23.46,3.89C23.85,4.28 23.85,4.91 23.46,5.3L11.11,17.65L9.7,16.24L21.34,4.6L20.63,5.3L19.22,6.71L17.8,5.3L17.09,6.01L15.68,7.42L14.26,6.01L13.56,6.71L12.14,8.13L10.73,6.71L10.03,7.42L11.44,8.84L12.15,9.54L13.56,8.13L14.97,9.54L16.39,8.13L17.8,9.54L19.22,8.13L20.63,9.54L22.05,8.13L23.46,9.54C23.85,9.93 23.85,10.56 23.46,10.95L11.11,23.3C10.72,23.69 10.09,23.69 9.7,23.3L0.54,14.14C0.15,13.75 0.15,13.12 0.54,12.73L9.38,3.89L10.09,4.6L10.8,3.89L12.21,5.3L13.62,3.89L15.03,5.3L16.45,3.89L17.86,5.3L19.27,3.89L20.68,5.3L22.1,3.89L23.51,5.3C23.9,5.69 23.9,6.32 23.51,6.71L11.16,19.06L9.75,17.65L22.1,5.3L20.68,6.71L19.27,8.13L17.86,6.71L16.45,8.13L15.03,6.71L13.62,8.13L12.21,6.71L10.8,8.13L9.38,6.71L8.68,7.42L10.09,8.84L11.5,10.25L12.91,8.84L14.32,10.25L15.74,8.84L17.15,10.25L18.56,8.84L19.98,10.25L21.39,8.84L22.8,10.25C23.19,10.64 23.19,11.27 22.8,11.66L10.45,24.01C10.06,24.4 9.43,24.4 9.04,24.01L0.19,15.16C-0.2,14.77 -0.2,14.14 0.19,13.75L9.03,4.91L10.44,6.32L11.85,4.91L13.27,6.32L14.68,4.91L16.09,6.32L17.51,4.91L18.92,6.32L20.33,4.91L21.75,6.32L23.16,4.91C23.55,4.52 24.18,4.52 24.57,4.91C24.96,5.3 24.96,5.93 24.57,6.32L12.22,18.67L10.81,17.26L23.16,4.91L21.75,6.32L20.33,7.74L18.92,6.32L17.51,7.74L16.09,6.32L14.68,7.74L13.27,6.32L11.85,7.74L10.44,6.32L9.73,7.03L11.15,8.44L12.56,9.86L13.97,8.44L15.39,9.86L16.8,8.44L18.21,9.86L19.63,8.44L21.04,9.86L22.45,8.44L23.87,9.86C24.26,10.25 24.26,10.88 23.87,11.27L11.52,23.62C11.13,24.01 10.5,24.01 10.11,23.62L1.26,14.77C0.87,14.38 0.87,13.75 1.26,13.36L10.1,4.52L11.52,5.93L12.93,4.52L14.34,5.93L15.76,4.52L17.17,5.93L18.58,4.52L20,5.93L21.41,4.52L22.82,5.93L24,7.11V12.5C24,12.78 23.78,13 23.5,13H22.5C22.22,13 22,12.78 22,12.5V8.53L21.04,7.57L19.63,8.98L18.21,7.57L16.8,8.98L15.39,7.57L13.97,8.98L12.56,7.57L11.15,8.98L9.73,7.57L9.03,8.27L10.44,9.68L11.85,11.1L13.27,9.68L14.68,11.1L16.09,9.68L17.51,11.1L18.92,9.68L20.33,11.1L21.75,9.68L23.16,11.1C23.55,11.49 23.55,12.12 23.16,12.51L10.81,24.86C10.42,25.25 9.79,25.25 9.4,24.86L0.55,16.01C0.16,15.62 0.16,14.99 0.55,14.6L9.39,5.76L10.81,7.17L12.22,5.76L13.63,7.17L15.05,5.76L16.46,7.17L17.87,5.76L19.29,7.17L20.7,5.76L22.11,7.17L23,8.06V12.5C23,12.78 22.78,13 22.5,13H21.5C21.22,13 21,12.78 21,12.5V9.47L20.33,8.8L18.92,10.21L17.51,8.8L16.09,10.21L14.68,8.8L13.27,10.21L11.85,8.8L10.44,10.21L9.03,8.8L8.32,9.51L9.73,10.92L11.15,12.34L12.56,10.92L13.97,12.34L15.39,10.92L16.8,12.34L18.21,10.92L19.63,12.34L21.04,10.92L22.45,12.34C22.84,12.73 22.84,13.36 22.45,13.75L10.1,26.1C9.71,26.49 9.08,26.49 8.69,26.1L0,17.41V12Z"
+                  />
+                </svg>
+              </div>
+              <div class="download-status status-soon" id="windows-status">
+                Coming Soon
+              </div>
+            </div>
+            <h3 class="download-title" id="windows-title">Windows</h3>
+            <p class="download-subtitle" id="windows-subtitle">
+              Windows 10 and above
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="assets/appstore.png" alt="Mushaffar" class="footer-logo" />
+          <div class="footer-text">
+            <h3 id="footer-brand">Mushaffar</h3>
+            <p id="footer-tagline">
+              Zero-knowledge password manager with no backend to hack.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4 id="footer-product">PRODUCT</h4>
+          <div class="footer-links">
+            <a href="#" id="footer-features">Features</a>
+            <a href="#" id="footer-security">Security</a>
+            <a href="#" id="footer-pricing">Pricing</a>
+            <a href="#" id="footer-download">Download</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4 id="footer-support">SUPPORT</h4>
+          <div class="footer-links">
+            <a href="#" id="footer-docs">Documentation</a>
+            <a href="#" id="footer-privacy">Privacy Policy</a>
+            <a href="#" id="footer-terms">Terms of Service</a>
+            <a href="#" id="footer-contact">Contact</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p id="footer-copyright">© 2024 Mushaffar. All rights reserved.</p>
+        <p id="footer-made">Made with 🔐 for privacy-conscious users</p>
+      </div>
+    </footer>
+
+    <script>
+      // Language Toggle System
+      const content = {
+        en: {
+          navTitle: "Mushaffar",
+          langText: "العربية",
+          heroBadge: "Zero Backend Architecture",
+          heroTitle: "Your passwords never leave your device",
+          heroSubtitle: "True zero-knowledge encryption",
+          heroDescription:
+            "Unlike cloud password managers, Mushaffar has no servers to hack. Your passwords are encrypted locally and sync only through your own Google Drive. You hold the only key.",
+          ctaPrimary: "Download for macOS",
+          ctaSecondary: "View All Platforms",
+          sectionBadge: "Zero Backend",
+          sectionTitle: "No servers. No breaches. No trust required.",
+          sectionDesc:
+            "Traditional password managers store your encrypted data on their servers. Mushaffar doesn't. There's literally nothing to hack.",
+          cloudTitle: "Cloud Password Managers",
+          cloud1: "Your data sits on their servers",
+          cloud2: "Server breaches expose everyone",
+          cloud3: "You must trust the company",
+          cloud4: "They control your access",
+          cloud5: "Subscription fees required",
+          mushaffarTitle: "Mushaffar",
+          mush1: "Data stays only on your devices",
+          mush2: "No backend = nothing to breach",
+          mush3: "Trust mathematics, not companies",
+          mush4: "You're always in control",
+          mush5: "One-time purchase, no subscriptions",
+          featuresBadge: "FEATURES",
+          featuresTitle: "Everything you need. Nothing you don't.",
+          featuresDesc: "Professional-grade security without the complexity",
+          feat1Title: "Argon2 Encryption",
+          feat1Desc: "Military-grade encryption protecting your data locally",
+          feat2Title: "Your Google Drive",
+          feat2Desc: "Optional sync through your own Google Drive",
+          feat3Title: "2FA Authenticator",
+          feat3Desc: "Built-in TOTP for two-factor authentication",
+          feat4Title: "Cross-Platform",
+          feat4Desc: "Works on macOS, iOS, Android, and Windows",
+          downloadTitle: "Download Mushaffar",
+          downloadDesc: "Available on all major platforms",
+          macosStatus: "Available",
+          macosTitle: "macOS",
+          macosSubtitle: "Universal binary for Intel & Apple Silicon",
+          macosBtn: "Download .dmg",
+          iosStatus: "Available",
+          iosTitle: "iOS & iPadOS",
+          iosSubtitle: "iPhone, iPad, and Apple Watch support",
+          androidStatus: "Available",
+          androidTitle: "Android",
+          androidSubtitle: "Android 8.0 and above",
+          windowsStatus: "Coming Soon",
+          windowsTitle: "Windows",
+          windowsSubtitle: "Windows 10 and above",
+          footerBrand: "Mushaffar",
+          footerTagline:
+            "Zero-knowledge password manager with no backend to hack.",
+          footerProduct: "PRODUCT",
+          footerFeatures: "Features",
+          footerSecurity: "Security",
+          footerPricing: "Pricing",
+          footerDownload: "Download",
+          footerSupport: "SUPPORT",
+          footerDocs: "Documentation",
+          footerPrivacy: "Privacy Policy",
+          footerTerms: "Terms of Service",
+          footerContact: "Contact",
+          footerCopyright: "© 2024 Mushaffar. All rights reserved.",
+          footerMade: "Made with 🔐 for privacy-conscious users",
+        },
+        ar: {
+          navTitle: "مشفّر",
+          langText: "English",
+          heroBadge: "بنية بدون خوادم خلفية",
+          heroTitle: "كلمات مرورك لا تغادر جهازك أبدًا",
+          heroSubtitle: "تشفير حقيقي بدون معرفة مسبقة",
+          heroDescription:
+            "على عكس مديري كلمات المرور السحابية، مشفّر لا يمتلك خوادم يمكن اختراقها. يتم تشفير كلمات مرورك محليًا وتتزامن فقط عبر Google Drive الخاص بك. أنت من يملك المفتاح الوحيد.",
+          ctaPrimary: "تحميل لنظام macOS",
+          ctaSecondary: "عرض جميع المنصات",
+          sectionBadge: "بدون خوادم خلفية",
+          sectionTitle: "لا خوادم. لا اختراقات. لا حاجة للثقة.",
+          sectionDesc:
+            "مديرو كلمات المرور التقليديون يخزنون بياناتك المشفرة على خوادمهم. مشفّر لا يفعل ذلك. لا يوجد شيء حرفيًا يمكن اختراقه.",
+          cloudTitle: "مديرو كلمات المرور السحابية",
+          cloud1: "بياناتك موجودة على خوادمهم",
+          cloud2: "اختراق الخوادم يعرض الجميع للخطر",
+          cloud3: "يجب أن تثق بالشركة",
+          cloud4: "هم من يتحكمون في وصولك",
+          cloud5: "رسوم اشتراك مطلوبة",
+          mushaffarTitle: "مشفّر",
+          mush1: "البيانات تبقى فقط على أجهزتك",
+          mush2: "لا خوادم = لا شيء للاختراق",
+          mush3: "ثق بالرياضيات، وليس الشركات",
+          mush4: "أنت دائمًا المتحكم",
+          mush5: "شراء لمرة واحدة، بدون اشتراكات",
+          featuresBadge: "المميزات",
+          featuresTitle: "كل ما تحتاجه. لا شيء زائد.",
+          featuresDesc: "أمان احترافي بدون تعقيد",
+          feat1Title: "تشفير Argon2",
+          feat1Desc: "تشفير عسكري يحمي بياناتك محليًا",
+          feat2Title: "Google Drive الخاص بك",
+          feat2Desc: "مزامنة اختيارية عبر Google Drive الخاص بك",
+          feat3Title: "مصادقة ثنائية",
+          feat3Desc: "مصادق TOTP مدمج للمصادقة الثنائية",
+          feat4Title: "متعدد المنصات",
+          feat4Desc: "يعمل على macOS و iOS و Android و Windows",
+          downloadTitle: "تحميل مشفّر",
+          downloadDesc: "متاح على جميع المنصات الرئيسية",
+          macosStatus: "متاح",
+          macosTitle: "macOS",
+          macosSubtitle: "ثنائي عام لمعالجات Intel و Apple Silicon",
+          macosBtn: "تحميل .dmg",
+          iosStatus: "متاح",
+          iosTitle: "iOS و iPadOS",
+          iosSubtitle: "دعم iPhone و iPad و Apple Watch",
+          androidStatus: "متاح",
+          androidTitle: "أندرويد",
+          androidSubtitle: "Android 8.0 وما فوق",
+          windowsStatus: "قريبًا",
+          windowsTitle: "Windows",
+          windowsSubtitle: "Windows 10 وما فوق",
+          footerBrand: "مشفّر",
+          footerTagline:
+            "مدير كلمات مرور بدون معرفة مسبقة بلا خوادم خلفية للاختراق.",
+          footerProduct: "المنتج",
+          footerFeatures: "المميزات",
+          footerSecurity: "الأمان",
+          footerPricing: "الأسعار",
+          footerDownload: "التحميل",
+          footerSupport: "الدعم",
+          footerDocs: "التوثيق",
+          footerPrivacy: "سياسة الخصوصية",
+          footerTerms: "شروط الخدمة",
+          footerContact: "اتصل بنا",
+          footerCopyright: "© 2024 مشفّر. جميع الحقوق محفوظة.",
+          footerMade: "صُنع بـ 🔐 لمستخدمي الخصوصية",
+        },
+      };
+
+      let currentLang = "en";
+
+      function toggleLanguage() {
+        currentLang = currentLang === "en" ? "ar" : "en";
+        const t = content[currentLang];
+
+        // Update all text content
+        const updates = {
+          "nav-title": t.navTitle,
+          "lang-text": t.langText,
+          "hero-badge": t.heroBadge,
+          "hero-title": t.heroTitle,
+          "hero-subtitle": t.heroSubtitle,
+          "hero-description": t.heroDescription,
+          "cta-primary": t.ctaPrimary,
+          "cta-secondary": t.ctaSecondary,
+          "section-badge": t.sectionBadge,
+          "section-title": t.sectionTitle,
+          "section-desc": t.sectionDesc,
+          "cloud-title": t.cloudTitle,
+          "cloud-1": t.cloud1,
+          "cloud-2": t.cloud2,
+          "cloud-3": t.cloud3,
+          "cloud-4": t.cloud4,
+          "cloud-5": t.cloud5,
+          "mushaffar-title": t.mushaffarTitle,
+          "mush-1": t.mush1,
+          "mush-2": t.mush2,
+          "mush-3": t.mush3,
+          "mush-4": t.mush4,
+          "mush-5": t.mush5,
+          "features-badge": t.featuresBadge,
+          "features-title": t.featuresTitle,
+          "features-desc": t.featuresDesc,
+          "feat1-title": t.feat1Title,
+          "feat1-desc": t.feat1Desc,
+          "feat2-title": t.feat2Title,
+          "feat2-desc": t.feat2Desc,
+          "feat3-title": t.feat3Title,
+          "feat3-desc": t.feat3Desc,
+          "feat4-title": t.feat4Title,
+          "feat4-desc": t.feat4Desc,
+          "feat5-title": t.feat5Title,
+          "feat5-desc": t.feat5Desc,
+          "feat6-title": t.feat6Title,
+          "feat6-desc": t.feat6Desc,
+          "download-title": t.downloadTitle,
+          "download-desc": t.downloadDesc,
+          "macos-status": t.macosStatus,
+          "macos-title": t.macosTitle,
+          "macos-subtitle": t.macosSubtitle,
+          "macos-btn": t.macosBtn,
+          "ios-status": t.iosStatus,
+          "ios-title": t.iosTitle,
+          "ios-subtitle": t.iosSubtitle,
+          "android-status": t.androidStatus,
+          "android-title": t.androidTitle,
+          "android-subtitle": t.androidSubtitle,
+          "windows-status": t.windowsStatus,
+          "windows-title": t.windowsTitle,
+          "windows-subtitle": t.windowsSubtitle,
+          "footer-brand": t.footerBrand,
+          "footer-tagline": t.footerTagline,
+          "footer-product": t.footerProduct,
+          "footer-features": t.footerFeatures,
+          "footer-security": t.footerSecurity,
+          "footer-pricing": t.footerPricing,
+          "footer-download": t.footerDownload,
+          "footer-support": t.footerSupport,
+          "footer-docs": t.footerDocs,
+          "footer-privacy": t.footerPrivacy,
+          "footer-terms": t.footerTerms,
+          "footer-contact": t.footerContact,
+          "footer-copyright": t.footerCopyright,
+          "footer-made": t.footerMade,
+        };
+
+        Object.keys(updates).forEach((id) => {
+          const element = document.getElementById(id);
+          if (element) element.textContent = updates[id];
+        });
+
+        // Update direction
+        document.body.setAttribute("dir", currentLang === "ar" ? "rtl" : "ltr");
+      }
+
+      // Smooth scroll for CTA
+      document.getElementById("cta-secondary").addEventListener("click", () => {
+        document
+          .querySelector(".downloads")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
