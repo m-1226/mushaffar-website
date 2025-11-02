@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mushaffar - Zero-Knowledge Password Manager</title>
+    <link rel="icon" type="image/png" href="assets/appstore.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -806,7 +807,7 @@
       }
     </style>
   </head>
-  <body>
+  <body dir="rtl">
     <!-- Background Effects -->
     <div class="bg-gradient"></div>
     <div class="bg-pattern"></div>
@@ -1134,8 +1135,8 @@
       </div>
 
       <div class="footer-bottom">
-        <p id="footer-copyright">© 2024 Mushaffar. All rights reserved.</p>
-        <p id="footer-made">Made with 🔐 for privacy-conscious users</p>
+        <p id="footer-copyright">© 2025 Mushaffar. All rights reserved.</p>
+        <p id="footer-made">Made with Mahmoud Ashraf</p>
       </div>
     </footer>
 
@@ -1207,11 +1208,11 @@
           footerPrivacy: "Privacy Policy",
           footerTerms: "Terms of Service",
           footerContact: "Contact",
-          footerCopyright: "© 2024 Mushaffar. All rights reserved.",
-          footerMade: "Made with 🔐 for privacy-conscious users",
+          footerCopyright: "© 2025 Mushaffar. All rights reserved.",
+          footerMade: "Made with Mahmoud Ashraf",
         },
         ar: {
-          navTitle: "مشفّر",
+          navTitle: "مُشفّر",
           langText: "English",
           heroBadge: "بنية بدون خوادم خلفية",
           heroTitle: "كلمات مرورك لا تغادر جهازك أبدًا",
@@ -1275,8 +1276,8 @@
           footerPrivacy: "سياسة الخصوصية",
           footerTerms: "شروط الخدمة",
           footerContact: "اتصل بنا",
-          footerCopyright: "© 2024 مشفّر. جميع الحقوق محفوظة.",
-          footerMade: "صُنع بـ 🔐 لمستخدمي الخصوصية",
+          footerCopyright: "© 2025 مشفّر. جميع الحقوق محفوظة.",
+          footerMade: "صُنع بواسطة محمود أشرف ",
         },
       };
 
@@ -1371,6 +1372,10 @@
         document
           .querySelector(".downloads")
           .scrollIntoView({ behavior: "smooth" });
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        toggleLanguage();
       });
     </script>
   </body>
