@@ -8,26 +8,25 @@
         
         <!-- macOS Version -->
         <item>
-            <title>Mushaffar 1.0.0</title>
+            <title>Mushaffar 1.2.0</title>
             <description>
                 <![CDATA[
-                    <h3>What's New in Version 1.0.0</h3>
+                    <h3>What's New in Version 1.2.0</h3>
                     <ul>
-                        <li>Initial release</li>
-                        <li>Secure password management</li>
-                        <li>2FA authenticator support</li>
-                        <li>Cards management</li>
-                        <li>Google Drive auto-backup</li>
-                        <li>Biometric authentication</li>
+                        <li>Premium desktop license activation system</li>
+                        <li>Google Drive integration for license management</li>
+                        <li>Enhanced security features</li>
+                        <li>Improved UI/UX with developer attribution</li>
+                        <li>Performance improvements and bug fixes</li>
                     </ul>
                 ]]>
             </description>
-            <pubDate>Sat, 02 Nov 2025 12:00:00 +0000</pubDate>
-            <sparkle:version>1.0.0</sparkle:version>
-            <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+            <pubDate>Mon, 04 Nov 2025 12:00:00 +0000</pubDate>
+            <sparkle:version>1.2.0</sparkle:version>
+            <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
             <enclosure 
-                url="https://github.com/m-1226/mushaffar-website/releases/download/v1.0.0/Mushaffar-1.0.0-macos.dmg"
+                url="https://github.com/m-1226/mushaffar-website/releases/download/v1.2.0/Mushaffar-1.2.0-macos.dmg"
                 sparkle:os="macos"
                 length="180000000"
                 type="application/octet-stream" />
@@ -35,25 +34,24 @@
         
         <!-- Windows Version -->
         <item>
-            <title>Mushaffar 1.0.0</title>
+            <title>Mushaffar 1.2.0</title>
             <description>
                 <![CDATA[
-                    <h3>What's New in Version 1.0.0</h3>
+                    <h3>What's New in Version 1.2.0</h3>
                     <ul>
-                        <li>Initial release</li>
-                        <li>Secure password management</li>
-                        <li>2FA authenticator support</li>
-                        <li>Cards management</li>
-                        <li>Google Drive auto-backup</li>
-                        <li>Biometric authentication</li>
+                        <li>Premium desktop license activation system</li>
+                        <li>Google Drive integration for license management</li>
+                        <li>Enhanced security features</li>
+                        <li>Improved UI/UX with developer attribution</li>
+                        <li>Performance improvements and bug fixes</li>
                     </ul>
                 ]]>
             </description>
-            <pubDate>Sat, 02 Nov 2025 12:00:00 +0000</pubDate>
-            <sparkle:version>1.0.0</sparkle:version>
+            <pubDate>Mon, 04 Nov 2025 12:00:00 +0000</pubDate>
+            <sparkle:version>1.2.0</sparkle:version>
             <sparkle:os>windows</sparkle:os>
             <enclosure 
-                url="https://github.com/m-1226/mushaffar-website/releases/download/v1.0.0/Mushaffar-1.0.0-windows.exe"
+                url="https://github.com/m-1226/mushaffar-website/releases/download/v1.2.0/Mushaffar-1.2.0-windows.exe"
                 type="application/octet-stream"
                 length="150000000" />
         </item>
