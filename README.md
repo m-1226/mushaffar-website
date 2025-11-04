@@ -14,7 +14,7 @@ Official website for Mushaffar, a password manager with zero backend architectur
 
 ## 🌐 Live Website
 
-Visit: [https://m-1226.github.io/mushaffar-website](https://m-1226.github.io/mushaffar-website)
+Visit: [https://mushaffar.com](https://mushaffar.com)
 
 ## 📱 Download
 
