@@ -1,0 +1,9 @@
+/* CSS Variables */
+:root {
+  --primary: #091e37;
+  --secondary: #4895ef;
+  --card-bg: #1a2f4a;
+  --accent-green: #06d6a0;
+  --text-muted: #94a3b8;
+  --border-subtle: rgba(72, 149, 239, 0.15);
+}
