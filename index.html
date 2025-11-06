@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mushaffar - Zero-Knowledge Password Manager</title>
     <link rel="icon" type="image/png" href="assets/app_icon_rounded.png" />
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Umami Analytics - Privacy-First -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="ce3cb2c1-16d4-426c-819f-4c404d051e47"></script>
-    
+    <script
+      defer
+      src="https://cloud.umami.is/script.js"
+      data-website-id="ce3cb2c1-16d4-426c-819f-4c404d051e47"
+    ></script>
+
     <!-- Styles -->
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/base.css" />
@@ -31,7 +41,11 @@
     <nav>
       <div class="nav-content">
         <div class="logo-container">
-          <img src="assets/appstore.png" alt="Mushaffar Logo" class="logo-img" />
+          <img
+            src="assets/appstore.png"
+            alt="Mushaffar Logo"
+            class="logo-img"
+          />
           <span class="logo-text" id="nav-title">Mushaffar</span>
         </div>
         <button class="lang-toggle" onclick="toggleLanguage()">
@@ -49,7 +63,9 @@
             <span id="hero-badge">Zero Backend Architecture</span>
           </div>
           <h1 id="hero-title">Your passwords never leave your device</h1>
-          <p class="hero-subtitle" id="hero-subtitle">True zero-knowledge encryption</p>
+          <p class="hero-subtitle" id="hero-subtitle">
+            True zero-knowledge encryption
+          </p>
           <p id="hero-description">
             Unlike cloud password managers, Mushaffar has no servers to hack.
             Your passwords are encrypted locally and sync only through your own
@@ -93,7 +109,9 @@
         <div class="comparison-grid">
           <div class="comparison-card loser">
             <div class="comparison-icon">☁️</div>
-            <h3 class="comparison-title" id="cloud-title">Cloud Password Managers</h3>
+            <h3 class="comparison-title" id="cloud-title">
+              Cloud Password Managers
+            </h3>
             <ul class="comparison-points">
               <li id="cloud-1">Your data sits on their servers</li>
               <li id="cloud-2">Server breaches expose everyone</li>
@@ -184,57 +202,100 @@
           <div class="download-card">
             <div class="download-header">
               <div class="platform-icon">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                <svg
+                  viewBox="0 0 24 24"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                  />
                 </svg>
               </div>
-              <div class="download-status status-available" id="macos-status">Available</div>
+              <div class="download-status status-available" id="macos-status">
+                Available
+              </div>
             </div>
             <h3 class="download-title" id="macos-title">macOS</h3>
             <p class="download-subtitle" id="macos-subtitle">
               Universal binary for Intel & Apple Silicon
             </p>
             <div class="store-badges">
-              <a href="https://github.com/m-1226/mushaffar-website/releases/download/v1.2.0/Mushaffar.dmg" 
-                 class="btn-primary" 
-                 style="margin-top: 16px; text-decoration: none"
-                 data-umami-event="macOS Download">
+              <a
+                href="https://github.com/m-1226/mushaffar-website/releases/download/v1.2.0/Mushaffar.dmg"
+                class="btn-primary"
+                style="margin-top: 16px; text-decoration: none"
+                data-umami-event="macOS Download"
+              >
                 <span id="macos-btn">Download .dmg</span>
               </a>
             </div>
           </div>
 
-          <a href="https://mukhtasar.pro/mushaffar-ios" target="_blank" class="download-card" data-umami-event="iOS Store Click">
+          <a
+            href="https://mukhtasar.pro/mushaffar-ios"
+            target="_blank"
+            class="download-card"
+            data-umami-event="iOS Store Click"
+          >
             <div class="download-header">
               <div class="platform-icon">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                <svg
+                  viewBox="0 0 24 24"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                  />
                 </svg>
               </div>
-              <div class="download-status status-available" id="ios-status">Available</div>
+              <div class="download-status status-available" id="ios-status">
+                Available
+              </div>
             </div>
             <h3 class="download-title" id="ios-title">iOS & iPadOS</h3>
             <p class="download-subtitle" id="ios-subtitle">iPhone and iPad</p>
             <div class="store-badges">
-              <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1280620800"
-                   alt="Download on App Store" class="store-badge" />
+              <img
+                src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1280620800"
+                alt="Download on App Store"
+                class="store-badge"
+              />
             </div>
           </a>
 
-          <a href="https://mukhtasar.pro/mushaffar-android" target="_blank" class="download-card" data-umami-event="Android Store Click">
+          <a
+            href="https://mukhtasar.pro/mushaffar-android"
+            target="_blank"
+            class="download-card"
+            data-umami-event="Android Store Click"
+          >
             <div class="download-header">
               <div class="platform-icon">
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="#3DDC84">
-                  <path d="M17.6,11.48 L19.44,8.3 C19.5,8.17 19.46,8.02 19.33,7.97 C19.2,7.91 19.05,7.95 19,8.08 L17.16,11.25 C15.91,10.68 14.47,10.37 13,10.37 C11.53,10.37 10.09,10.68 8.84,11.25 L7,8.08 C6.95,7.95 6.8,7.91 6.67,7.97 C6.54,8.02 6.5,8.17 6.56,8.3 L8.4,11.48 C6.25,12.69 4.76,14.79 4.5,17.25 L21.5,17.25 C21.24,14.79 19.75,12.69 17.6,11.48 M7,13.75 C7,13.33 7.34,13 7.75,13 C8.16,13 8.5,13.34 8.5,13.75 C8.5,14.16 8.16,14.5 7.75,14.5 C7.34,14.5 7,14.16 7,13.75 M16.5,13.75 C16.5,13.34 16.84,13 17.25,13 C17.66,13 18,13.34 18,13.75 C18,14.16 17.66,14.5 17.25,14.5 C16.84,14.5 16.5,14.16 16.5,13.75 Z" />
+                  <path
+                    d="M17.6,11.48 L19.44,8.3 C19.5,8.17 19.46,8.02 19.33,7.97 C19.2,7.91 19.05,7.95 19,8.08 L17.16,11.25 C15.91,10.68 14.47,10.37 13,10.37 C11.53,10.37 10.09,10.68 8.84,11.25 L7,8.08 C6.95,7.95 6.8,7.91 6.67,7.97 C6.54,8.02 6.5,8.17 6.56,8.3 L8.4,11.48 C6.25,12.69 4.76,14.79 4.5,17.25 L21.5,17.25 C21.24,14.79 19.75,12.69 17.6,11.48 M7,13.75 C7,13.33 7.34,13 7.75,13 C8.16,13 8.5,13.34 8.5,13.75 C8.5,14.16 8.16,14.5 7.75,14.5 C7.34,14.5 7,14.16 7,13.75 M16.5,13.75 C16.5,13.34 16.84,13 17.25,13 C17.66,13 18,13.34 18,13.75 C18,14.16 17.66,14.5 17.25,14.5 C16.84,14.5 16.5,14.16 16.5,13.75 Z"
+                  />
                 </svg>
               </div>
-              <div class="download-status status-available" id="android-status">Available</div>
+              <div class="download-status status-available" id="android-status">
+                Available
+              </div>
             </div>
             <h3 class="download-title" id="android-title">Android</h3>
-            <p class="download-subtitle" id="android-subtitle">Android 8.0 and above</p>
+            <p class="download-subtitle" id="android-subtitle">
+              Android 8.0 and above
+            </p>
             <div class="store-badges">
-              <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                   alt="Get it on Google Play" class="store-badge" style="height: 60px" />
+              <img
+                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+                alt="Get it on Google Play"
+                class="store-badge"
+                style="height: 60px"
+              />
             </div>
           </a>
 
@@ -242,18 +303,26 @@
             <div class="download-header">
               <div class="platform-icon">
                 <svg viewBox="0 0 24 24" width="28" height="28" fill="#00A4EF">
-                  <path d="M0,3.449L9.75,2.1v9.451H0m10.949-9.602L24,0v11.4H10.949M0,12.6H9.75v9.451L0,20.699M10.949,12.6H24V24l-12.9-1.801" />
+                  <path
+                    d="M0,3.449L9.75,2.1v9.451H0m10.949-9.602L24,0v11.4H10.949M0,12.6H9.75v9.451L0,20.699M10.949,12.6H24V24l-12.9-1.801"
+                  />
                 </svg>
               </div>
-              <div class="download-status status-available" id="windows-status">Available</div>
+              <div class="download-status status-available" id="windows-status">
+                Available
+              </div>
             </div>
             <h3 class="download-title" id="windows-title">Windows</h3>
-            <p class="download-subtitle" id="windows-subtitle">Windows 7, 8, 10, 11</p>
+            <p class="download-subtitle" id="windows-subtitle">
+              Windows 7, 8, 10, 11
+            </p>
             <div class="store-badges">
-              <a href="https://github.com/m-1226/mushaffar-website/releases/download/v1.2.0/Mushaffar.Windows.zip" 
-                 class="btn-primary" 
-                 style="margin-top: 16px; text-decoration: none"
-                 data-umami-event="Windows Download">
+              <a
+                href="https://github.com/m-1226/mushaffar-website/releases/download/v1.2.0/Mushaffar_Windows.zip"
+                class="btn-primary"
+                style="margin-top: 16px; text-decoration: none"
+                data-umami-event="Windows Download"
+              >
                 <span id="windows-btn">Download .zip</span>
               </a>
             </div>
@@ -262,14 +331,25 @@
           <div class="download-card disabled">
             <div class="download-header">
               <div class="platform-icon">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                  <path d="M12,20L15.46,14H15.45C15.79,13.4 16.03,12.72 16.11,12C16.23,11.15 16.18,10.22 15.78,9.25C15.39,8.28 14.75,7.49 14,6.86C13.25,6.23 12.39,5.77 11.5,5.5C10.61,5.24 9.69,5.17 8.79,5.29C7.89,5.4 7.03,5.69 6.25,6.15C5.46,6.61 4.77,7.23 4.22,7.97C3.67,8.71 3.27,9.57 3.06,10.5C2.85,11.43 2.84,12.42 3.04,13.37C3.23,14.32 3.63,15.21 4.18,15.97C4.74,16.73 5.45,17.34 6.25,17.77C7.05,18.2 7.93,18.43 8.83,18.46C8.83,18.46 8.83,18.46 8.83,18.46L12,20M14.93,3.37C16.98,4.5 18.5,6.47 19,8.76C19.58,11.43 18.85,14.27 17,16.39L14.93,3.37M8.93,2.5C10.05,2.65 11.11,3.08 12,3.74L9.93,16.76C8.87,16.66 7.88,16.23 7.05,15.57C5.61,14.42 4.74,12.73 4.65,10.93C4.56,9.13 5.27,7.39 6.59,6.11C7.28,5.43 8.09,4.92 8.93,2.5Z" />
+                <svg
+                  viewBox="0 0 24 24"
+                  width="28"
+                  height="28"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12,20L15.46,14H15.45C15.79,13.4 16.03,12.72 16.11,12C16.23,11.15 16.18,10.22 15.78,9.25C15.39,8.28 14.75,7.49 14,6.86C13.25,6.23 12.39,5.77 11.5,5.5C10.61,5.24 9.69,5.17 8.79,5.29C7.89,5.4 7.03,5.69 6.25,6.15C5.46,6.61 4.77,7.23 4.22,7.97C3.67,8.71 3.27,9.57 3.06,10.5C2.85,11.43 2.84,12.42 3.04,13.37C3.23,14.32 3.63,15.21 4.18,15.97C4.74,16.73 5.45,17.34 6.25,17.77C7.05,18.2 7.93,18.43 8.83,18.46C8.83,18.46 8.83,18.46 8.83,18.46L12,20M14.93,3.37C16.98,4.5 18.5,6.47 19,8.76C19.58,11.43 18.85,14.27 17,16.39L14.93,3.37M8.93,2.5C10.05,2.65 11.11,3.08 12,3.74L9.93,16.76C8.87,16.66 7.88,16.23 7.05,15.57C5.61,14.42 4.74,12.73 4.65,10.93C4.56,9.13 5.27,7.39 6.59,6.11C7.28,5.43 8.09,4.92 8.93,2.5Z"
+                  />
                 </svg>
               </div>
-              <div class="download-status status-soon" id="chrome-status">Coming Soon</div>
+              <div class="download-status status-soon" id="chrome-status">
+                Coming Soon
+              </div>
             </div>
             <h3 class="download-title" id="chrome-title">Chrome Extension</h3>
-            <p class="download-subtitle" id="chrome-subtitle">Auto-fill passwords in your browser</p>
+            <p class="download-subtitle" id="chrome-subtitle">
+              Auto-fill passwords in your browser
+            </p>
           </div>
         </div>
       </div>
@@ -313,9 +393,16 @@
         <p id="footer-copyright">© 2025 Mushaffar. All rights reserved.</p>
         <p id="footer-made">
           Made with 🔐 by
-          <a href="#" 
-             onclick="openDeveloperModal(); return false;"
-             style="color: var(--secondary); text-decoration: none; cursor: pointer;">Mahmoud Ashraf</a>
+          <a
+            href="#"
+            onclick="openDeveloperModal(); return false;"
+            style="
+              color: var(--secondary);
+              text-decoration: none;
+              cursor: pointer;
+            "
+            >Mahmoud Ashraf</a
+          >
         </p>
       </div>
     </footer>
@@ -325,46 +412,101 @@
       <div class="modal-overlay"></div>
       <div class="modal-content">
         <div class="developer-profile">
-          <img src="assets/my_image.jpeg" alt="Mahmoud Ashraf" class="developer-avatar" />
+          <img
+            src="assets/my_image.jpeg"
+            alt="Mahmoud Ashraf"
+            class="developer-avatar"
+          />
           <h2 class="developer-name">Mahmoud Ashraf</h2>
-          <p class="developer-title" id="developer-title">Cybersecurity & Software Developer</p>
-          
+          <p class="developer-title" id="developer-title">
+            Cybersecurity & Software Developer
+          </p>
+
           <div class="developer-links">
-            <a href="https://play.google.com/store/apps/dev?id=7844792119767225049&hl=en" target="_blank" class="dev-link">
-              <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+            <a
+              href="https://play.google.com/store/apps/dev?id=7844792119767225049&hl=en"
+              target="_blank"
+              class="dev-link"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                fill="currentColor"
+              >
+                <path
+                  d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"
+                />
               </svg>
               <span id="link-playstore">Play Store</span>
             </a>
-            
-            <a href="https://apps.apple.com/us/developer/mahmoud-ashraf/id1795474821" target="_blank" class="dev-link">
-              <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+
+            <a
+              href="https://apps.apple.com/us/developer/mahmoud-ashraf/id1795474821"
+              target="_blank"
+              class="dev-link"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="32"
+                height="32"
+                fill="currentColor"
+              >
+                <path
+                  d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+                />
               </svg>
               <span id="link-appstore">App Store</span>
             </a>
-            
-            <a href="https://www.linkedin.com/in/mahmoud-ashraf-yahia/" target="_blank" class="dev-link">
+
+            <a
+              href="https://www.linkedin.com/in/mahmoud-ashraf-yahia/"
+              target="_blank"
+              class="dev-link"
+            >
               <svg viewBox="0 0 24 24" width="32" height="32" fill="#0A66C2">
-                <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+                <path
+                  d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"
+                />
               </svg>
               <span>LinkedIn</span>
             </a>
-            
-            <a href="https://qabilah.com/profile/mahmoud-ashraf-yahia/" target="_blank" class="dev-link">
-              <img src="assets/qabilah_logo.png" alt="Qabilah" width="32" height="32" />
+
+            <a
+              href="https://qabilah.com/profile/mahmoud-ashraf-yahia/"
+              target="_blank"
+              class="dev-link"
+            >
+              <img
+                src="assets/qabilah_logo.png"
+                alt="Qabilah"
+                width="32"
+                height="32"
+              />
               <span>Qabilah</span>
             </a>
-            
-            <a href="https://youtube.com/@aliemphizia" target="_blank" class="dev-link">
+
+            <a
+              href="https://youtube.com/@aliemphizia"
+              target="_blank"
+              class="dev-link"
+            >
               <svg viewBox="0 0 24 24" width="32" height="32" fill="#FF0000">
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
               </svg>
               <span>YouTube</span>
             </a>
           </div>
-          
-          <button class="modal-close" onclick="closeDeveloperModal()" id="modal-close">Close</button>
+
+          <button
+            class="modal-close"
+            onclick="closeDeveloperModal()"
+            id="modal-close"
+          >
+            Close
+          </button>
         </div>
       </div>
     </div>
