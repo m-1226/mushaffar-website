@@ -120,7 +120,6 @@ function toggleLanguage() {
     "premium-plan-name": t.premiumPlanName,
     "premium-price": t.premiumPrice,
     "premium-period": t.premiumPeriod,
-    "premium-discount": t.premiumDiscount,
     "premium-feat-1": t.premiumFeat1,
     "premium-feat-2": t.premiumFeat2,
     "premium-feat-3": t.premiumFeat3,
