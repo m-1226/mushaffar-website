@@ -1,113 +1,66 @@
-/* Responsive Styles */
+/* ===== Responsive ===== */
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .hero-container {
     grid-template-columns: 1fr;
     text-align: center;
   }
+  .hero-content { max-width: 100%; }
+  .hero-cta { justify-content: center; }
+  .hero-visual { margin-top: 40px; }
+  .hero-app-icon { width: 220px; height: 220px; border-radius: 44px; }
+  .mockup-glow { width: 280px; height: 280px; }
 
-  .hero-content {
-    max-width: 100%;
-  }
-
-  .hero-cta {
-    justify-content: center;
-  }
-
-  .hero-visual {
-    margin-top: 60px;
-  }
-
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .download-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .platform-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .nav-content {
-    padding: 16px 24px;
+  :root {
+    --section-py: 64px;
+    --container-px: 20px;
   }
 
-  .hero {
-    padding: 100px 24px 60px;
-  }
+  .nav-links { display: none; }
+  .nav-content { height: 56px; }
 
-  .hero h1 {
-    font-size: 42px;
-  }
+  .hero { padding: 100px 0 24px; min-height: auto; }
+  .hero h1 { font-size: 36px; letter-spacing: -1px; }
+  .hero-subtitle { font-size: 17px; }
+  .hero-desc { font-size: 15px; }
+  .hero-app-icon { width: 180px; height: 180px; border-radius: 36px; }
+  .mockup-glow { width: 230px; height: 230px; }
 
-  .hero-subtitle {
-    font-size: 20px;
-  }
+  .trust-items { gap: 20px; }
+  .trust-item { font-size: 12px; }
 
-  .hero p {
-    font-size: 16px;
-  }
+  .section-title { font-size: 28px; }
+  .section-description { font-size: 16px; }
+  .section-header { margin-bottom: 40px; }
 
-  .logo-showcase {
-    width: 300px;
-    height: 300px;
-  }
+  .comparison-grid { grid-template-columns: 1fr; }
+  .comparison-card { padding: 28px; }
 
-  .logo-main {
-    width: 220px;
-    height: 220px;
-  }
+  .features-grid { grid-template-columns: 1fr; }
 
-  .section-title {
-    font-size: 36px;
-  }
+  .steps-grid { grid-template-columns: 1fr; gap: 16px; }
 
-  .section-description {
-    font-size: 18px;
-  }
+  .platform-grid { grid-template-columns: 1fr; max-width: 400px; }
 
-  .comparison-grid {
-    grid-template-columns: 1fr;
-  }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .pricing-card { padding: 32px 24px; }
 
-  .features-grid {
-    grid-template-columns: 1fr;
-  }
+  .footer-content { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
 
-  .download-grid {
-    grid-template-columns: 1fr;
-  }
+  .developer-links { grid-template-columns: 1fr; }
+  .developer-profile { padding: 28px 20px; }
+}
 
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-  }
-
-  /* Developer Modal Mobile */
-  .developer-avatar {
-    width: 100px;
-    height: 100px;
-  }
-
-  .developer-name {
-    font-size: 24px;
-  }
-
-  .developer-title {
-    font-size: 16px;
-  }
-
-  .developer-links {
-    grid-template-columns: 1fr;
-  }
-
-  .developer-profile {
-    padding: 32px 24px;
-  }
+@media (max-width: 480px) {
+  .hero h1 { font-size: 30px; }
+  .hero-cta { flex-direction: column; }
+  .hero-cta .btn-primary,
+  .hero-cta .btn-secondary { width: 100%; justify-content: center; }
+  .trust-items { flex-direction: column; align-items: center; gap: 12px; }
 }
