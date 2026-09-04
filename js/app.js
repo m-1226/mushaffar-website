@@ -157,7 +157,7 @@ function toggleLanguage() {
 
   Object.keys(directMap).forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.innerHTML = directMap[id];
+    if (el && directMap[id] !== undefined) el.innerHTML = directMap[id];
   });
 
   // Update direction
