@@ -148,7 +148,7 @@ function toggleLanguage() {
     "footer-support": t.footerSupport,
     "footer-contact": t.footerContact,
     "footer-privacy": t.footerPrivacy,
-    "footer-copyright": t.footerCopyright,
+    "footer-copyright": t.footerCopyright.replace("{year}", new Date().getFullYear()),
     "footer-made": t.footerMade,
     "developer-title": t.developerTitle,
     "link-playstore": t.linkPlaystore,
