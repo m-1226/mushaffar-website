@@ -42,7 +42,6 @@ function toggleLanguage() {
     "hero-title": t.heroTitle,
     "hero-subtitle": t.heroSubtitle,
     "hero-description": t.heroDescription,
-    "cta-primary": t.ctaPrimary,
     "cta-secondary": t.ctaSecondary,
     "trust-1": t.trust1,
     "trust-2": t.trust2,
@@ -165,6 +164,92 @@ function toggleLanguage() {
   document.body.setAttribute("dir", isAr ? "rtl" : "ltr");
   document.documentElement.setAttribute("lang", currentLang);
   document.documentElement.setAttribute("dir", isAr ? "rtl" : "ltr");
+
+  // Update Hero CTA based on detected user OS and current language
+  updateHeroCta();
+}
+
+
+// ===== Dynamic OS Platform Detection & Hero CTA =====
+
+const PLATFORMS = {
+  mac: {
+    key: "ctaMac",
+    url: "https://github.com/m-1226/mushaffar-website/releases/download/v1.4.2/Mushaffar.dmg",
+    event: "macOS Download",
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`
+  },
+  windows: {
+    key: "ctaWindows",
+    url: "https://github.com/m-1226/mushaffar-website/releases/download/v1.4.2/Mushaffar_Windows.zip",
+    event: "Windows Download",
+    icon: `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M0,3.449L9.75,2.1v9.451H0m10.949-9.602L24,0v11.4H10.949M0,12.6H9.75v9.451L0,20.699M10.949,12.6H24V24l-12.9-1.801"/></svg>`
+  },
+  linux: {
+    key: "ctaLinux",
+    url: "https://github.com/m-1226/mushaffar-website/releases/download/v1.4.2/Mushaffar-Linux.tar.gz",
+    event: "Linux Download",
+    icon: `<img src="assets/linux.svg" width="18" height="18" alt="Linux" style="display: inline-block; vertical-align: middle;">`
+  },
+  android: {
+    key: "ctaAndroid",
+    url: "https://play.google.com/store/apps/details?id=kryptor.app",
+    event: "Android Store Click",
+    target: "_blank",
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6,11.48 L19.44,8.3a.63.63 0 0 0-.25-.83.63.63 0 0 0-.84.25L16.47,10.5A9.14,9.14 0 0 0 13,9.76 9.14,9.14 0 0 0 9.53,10.5L7.65,7.72a.63.63 0 0 0-.84-.25.63.63 0 0 0-.25.83L8.4,11.48A8.32,8.32 0 0 0 4.5,17.25h17A8.32,8.32 0 0 0 17.6,11.48M7.75,14.5A.75.75 0 1 1 8.5,13.75.75.75 0 0 1 7.75,14.5m8.5,0a.75.75 0 1 1 .75-.75A.75.75 0 0 1 16.25,14.5Z"/></svg>`
+  },
+  ios: {
+    key: "ctaiOS",
+    url: "https://apps.apple.com/us/app/mushaffar-%D9%85-%D8%B4%D9%81%D8%B1/id6753790987",
+    event: "iOS Store Click",
+    target: "_blank",
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>`
+  }
+};
+
+function detectUserPlatform() {
+  const ua = (navigator.userAgent || "").toLowerCase();
+  const platform = (navigator.userAgentData?.platform || navigator.platform || "").toLowerCase();
+
+  // Mobile checks
+  if (/android/.test(ua)) return "android";
+  if (/ipad|iphone|ipod/.test(ua) || (platform.includes("mac") && navigator.maxTouchPoints > 1)) return "ios";
+
+  // Desktop checks
+  if (platform.includes("win") || /windows/.test(ua)) return "windows";
+  if (platform.includes("linux") || /linux|x11/.test(ua)) return "linux";
+  if (platform.includes("mac") || /macintosh|mac os x/.test(ua)) return "mac";
+
+  return "mac";
+}
+
+function updateHeroCta() {
+  const os = detectUserPlatform();
+  const config = PLATFORMS[os] || PLATFORMS.mac;
+  const btn = document.getElementById("hero-download-btn");
+  const icon = document.getElementById("hero-download-icon");
+  const text = document.getElementById("cta-primary");
+
+  if (btn) {
+    btn.href = config.url;
+    btn.setAttribute("data-umami-event", config.event);
+    if (config.target) {
+      btn.setAttribute("target", config.target);
+    } else {
+      btn.removeAttribute("target");
+    }
+  }
+
+  if (icon) {
+    icon.innerHTML = config.icon;
+  }
+
+  if (text) {
+    const t = translations[currentLang] || translations.en;
+    if (t && t[config.key]) {
+      text.textContent = t[config.key];
+    }
+  }
 }
 
 // ===== Dark Mode =====
